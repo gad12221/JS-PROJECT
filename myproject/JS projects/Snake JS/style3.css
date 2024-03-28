@@ -1,0 +1,340 @@
+/* Import Google font */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
+* {
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+body {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 100vh;
+
+  #grad {
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  }
+
+  background: linear-gradient(90deg, rgb(17, 36, 202) 0%, rgb(3, 65, 122) 22%, rgb(4, 158, 30) 90%);
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  background-attachment: fixed;
+
+}
+
+
+
+img.snake-img {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+
+.img-container {
+  display: block;
+  position: absolute;
+  width: 200px;
+
+
+}
+
+.img-container.top-right {
+  top: 30px;
+  right: 3em;
+  width: auto;
+
+
+}
+
+.img-container.top-left {
+  top: 30px;
+  left: 0;
+  width: 200px;
+}
+
+.img-container.bu-right {
+  bottom: 3em;
+  right: 3em;
+  width: auto;
+}
+
+.img-container.bu-left {
+  bottom: 3em;
+  left: 0;
+  width: auto;
+}
+
+.title-game {
+  text-align: center;
+  color: white;
+  font-size: 1em;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 30px #ececec;
+  position: absolute;
+  top: 8%;
+  left: 34.5%;
+  width: 31%;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0;
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+}
+
+.wrapper {
+
+  width: 65vmin;
+
+  height: 70vmin;
+
+  display: flex;
+
+  overflow: hidden;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  border-radius: 5px;
+
+  background: #293447;
+
+  box-shadow: 0 20px 40px rgba(52, 87, 220, 0.2);
+}
+
+.game-details {
+
+  color: #B8C6DC;
+
+  font-weight: 500;
+
+  font-size: 1.2rem;
+
+  padding: 20px 27px;
+
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.play-board {
+
+  height: 100%;
+
+  width: 100%;
+
+  display: grid;
+
+  background: #212837;
+
+  grid-template: repeat(30, 1fr) / repeat(30, 1fr);
+}
+
+.play-board .food {
+  background-color: #FF003D;
+  background: url("./images/Apple.png");
+
+  background-size: cover;
+
+  background-position: center;
+}
+
+.play-board .head {
+
+  background: #60ffff;
+  border-radius: 50px;
+  border: #036852 3px solid;
+
+}
+
+
+
+.controls {
+
+  display: none;
+
+  justify-content: space-between;
+
+}
+
+.controls i {
+
+  padding: 25px 0;
+
+  text-align: center;
+
+  font-size: 1.3rem;
+
+  color: #B8C6DC;
+
+  width: calc(100% / 4);
+
+  cursor: pointer;
+
+  border-right: 1px solid #171B26;
+
+}
+
+
+
+@media screen and (max-width: 800px) {
+
+  .wrapper {
+
+    width: 90vmin;
+
+    height: 115vmin;
+
+  }
+
+  .game-details {
+
+    font-size: 1rem;
+
+    padding: 15px 27px;
+
+  }
+
+  .controls {
+
+    display: flex;
+
+  }
+
+  .controls i {
+
+    padding: 15px 0;
+
+    font-size: 1rem;
+
+  }
+
+}
+
+.pop-bgc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* צבע הרקע של ה-PopUp בעזרת rgba() */
+  z-index: 1000;
+  /* כדי לוודא שה-PopUp יוצג מעל כל האלמנטים האחרים */
+  transition: all 300ms ease-in-out 500ms;
+  transform: translate(0%, 0%) scale(1);
+  display: none;
+  /* הסתרת ה-PopUp בתחילה */
+}
+
+.pop-up {
+  /* display: none; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  background-color: rgba(255, 255, 255, 0.527);
+  padding: 20px;
+  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  border-radius: 5px;
+  text-align: center;
+  width: 40%;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.5em;
+  display: none;
+  /* הסתרת ה-PopUp בתחילה */
+
+}
+
+.pop-up>h2,
+h4 {
+  text-align: center;
+  font-family: 'Open Sans',
+    sans-serif;
+  font-weight: 700;
+}
+
+.pop-up>h4 {
+  font-size: 2em;
+}
+
+.pop-up .pop-up-click {
+  display: block;
+  margin-top: 40px;
+  background-color: #036852;
+  width: 50%;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  cursor: pointer;
+  flex-grow: initial;
+  transform: uppercase;
+  transition: transform 0.5s ease-in-out;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px 0;
+  border: 0;
+  color: white;
+  font-size: 1.2em;
+  letter-spacing: 0.1em;
+
+}
+
+.pop-up .pop-up-click:hover {
+  background-color: #1549f59d;
+  transform: scale(1.17);
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 30px #ececec;
+  color: aqua;
+}
+
+.btn-warpper {
+  display: flex;
+  justify-content: center;
+}
